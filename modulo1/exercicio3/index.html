@@ -11,10 +11,13 @@
 <body>
     <script>
         function temHabilidade(skills) {
-            // código aqui
+            for (let index = 0; index < skills.length; index++) {
+                return skills[index] == "Javascript"? true : false;
+                
+            }
         }
         var skills = ["Javascript", "ReactJS", "React Native"];
-        temHabilidade(skills); // true ou false
+        console.log(temHabilidade(skills)); // true ou false
     </script>
 </body>
 
