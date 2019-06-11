@@ -16,22 +16,21 @@
 
 
     <script>
+        var divQuant = 0;
         function quadrado() {
             var divQ = document.createElement("div");
             divQ.style.width = "106px";
             divQ.style.height = "106px";
             divQ.style.margin = "6px"
-            divQ.setAttribute("class", "qua");
-            divQ.setAttribute("onmousemove", "change()");
+            divQ.setAttribute("id", divQuant);
+            divQ.setAttribute("onmouseover", "change(id)");
             divQ.style.backgroundColor = "red";
-
+            divQuant += 1;
 
             var div = document.querySelector('#bo');
             div.appendChild(divQ);
         }
-        function change() {
-            console.log("funciona");
-        }
+        
         function getRandomColor() {
             var letters = "0123456789ABCDEF";
             var color = "#";
@@ -41,6 +40,11 @@
             return color;
         }
         var newColor = getRandomColor();
+
+        function change(x) {
+            var div = document.getElementById(x)
+            div.style.backgroundColor = getRandomColor();
+        }
     </script>
 </body>
 
