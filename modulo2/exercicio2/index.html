@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="quadrado()">Criação</button>
+    <div id="bo">
+
+    </div>
+
+
+    <script>
+        function quadrado() {
+            var divQ = document.createElement("div");
+            divQ.style.width = "106px";
+            divQ.style.height = "106px";
+            divQ.style.margin = "6px"
+            divQ.setAttribute("class", "qua");
+            divQ.setAttribute("onmousemove", "change()");
+            divQ.style.backgroundColor = "red";
+
+
+            var div = document.querySelector('#bo');
+            div.appendChild(divQ);
+        }
+        function change() {
+            console.log("funciona");
+        }
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        var newColor = getRandomColor();
+    </script>
+</body>
+
+</html>
