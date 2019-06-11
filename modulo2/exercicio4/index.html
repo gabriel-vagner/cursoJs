@@ -9,8 +9,8 @@
 </head>
 
 <body>
-    <input type="text" name="nome">
-    <button onClick="adicionar()">Adicionar</button>
+    <input type="text" id="n"/>
+    <button onclick="adicionar()" type="reset">Adicionar</button>
     <ul id="lista">
 
 
@@ -26,7 +26,12 @@
             lista.appendChild(listaE);
         }
         function adicionar() {
-            
+            var novaLinha = document.getElementById("n").value;
+            var listaE = document.createElement("li");
+
+            listaE.appendChild(document.createTextNode(novaLinha));
+            lista.appendChild(listaE);
+            document.getElementById("n").value = "";
         }
     </script>
 </body>
