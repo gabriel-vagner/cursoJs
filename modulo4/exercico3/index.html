@@ -20,25 +20,34 @@
         </ul>
     </div>
     <script>
-        
-        
+
+
 
         function buscar() {
             var input = document.querySelector('#aplic input').value;
-            axios.get("https://api.github.com/users/"+input+"/repos")
-                .then(function(response){
+            var lista = document.querySelector('#aplic ul');
+            var carre = document.createElement('li');
+            carre.appendChild(document.createTextNode("Carregando..."));
+            carre.setAttribute('id', 'carre');
+            lista.appendChild(carre);
+            
+
+            axios.get("https://api.github.com/users/" + input + "/repos")
+                .then(function (response) {
                     console.log(response);
-                    for(i = 0; i< response.data.length; i++){
+                    lista.removeChild(document.getElementById('carre'));
+                    for (i = 0; i < response.data.length; i++) {
                         //console.log(response.data[i].name);
-                        var lista = document.querySelector('#aplic ul');
+                        lista = document.querySelector('#aplic ul');
                         var listElement = document.createElement('li');
                         listElement.appendChild(document.createTextNode(response.data[i].name));
                         lista.appendChild(listElement);
 
                     }
                 })
-                .catch(function(error){
+                .catch(function (error) {
                     //console.log(error);
+                    lista.removeChild(document.getElementById('carre'));
                     alert("error 404 usuario não existente");
                 });
 
