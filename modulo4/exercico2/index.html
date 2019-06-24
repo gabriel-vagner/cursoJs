@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
     <div id='aplic'>
         <input type="text" placeholder="Digite o Usuario">
-        <button onclick="">Pesquisar</button>
+        <button onclick="buscar()">Pesquisar</button>
 
         <ul>
 
@@ -19,7 +20,19 @@
         </ul>
     </div>
     <script>
+        
 
+
+        function buscar() {
+            var input = document.querySelector('#aplic input').value;
+            axios.get("https://api.github.com/users/"+input+"/repos")
+                .then(function(){
+                    console.log("acho");
+                })
+                .catch(function(){
+                    console.log("nop");
+                });
+        }
     </script>
 </body>
 
