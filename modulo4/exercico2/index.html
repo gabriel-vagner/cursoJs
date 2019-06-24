@@ -21,17 +21,26 @@
     </div>
     <script>
         
-
+        
 
         function buscar() {
             var input = document.querySelector('#aplic input').value;
             axios.get("https://api.github.com/users/"+input+"/repos")
-                .then(function(){
-                    console.log("acho");
+                .then(function(response){
+                    console.log(response);
+                    for(i = 0; i< response.data.length; i++){
+                        //console.log(response.data[i].name);
+                        var lista = document.querySelector('#aplic ul');
+                        var listElement = document.createElement('li');
+                        listElement.appendChild(document.createTextNode(response.data[i].name));
+                        lista.appendChild(listElement);
+
+                    }
                 })
-                .catch(function(){
-                    console.log("nop");
+                .catch(function(error){
+                    console.log(error);
                 });
+
         }
     </script>
 </body>
